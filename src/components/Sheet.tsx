@@ -1,9 +1,35 @@
 import React, { useState } from "react";
 import clsx from "clsx";
-
-
+import { FiFileText, FiCalendar, FiCheckCircle, FiUser, FiLink, FiUsers, FiFlag, FiClock, FiDollarSign, FiPlus } from "react-icons/fi";
+import briefcase from '../assets/briefcase.png'
+import submitted from '../assets/submitted.png'
 type StatusType = "In-process" | "Complete" | "Blocked" | "Yet to start";
 type PriorityType = "High" | "Medium" | "Low";
+
+
+
+
+const columns = [
+  { key: "request", label: "Job Request", icon: <img
+    src={briefcase}
+    alt="Briefcase"
+    className="w-4 h-4 mr-1 ml-1"
+  />
+ },
+  { key: "submitted", label: "Submitted", icon: <img
+    src={submitted}
+    alt="submitted"
+    className="w-4 h-4 mr-1 ml-1"
+  /> },
+  { key: "status", label: "Status", icon: <FiCheckCircle className="mr-1" /> },
+  { key: "submitter", label: "Submitter", icon: <FiUser className="mr-1" /> },
+  { key: "url", label: "URL", icon: <FiLink className="mr-1" /> },
+  { key: "assigned", label: "Assigned", icon: <FiUsers className="mr-1" /> },
+  { key: "priority", label: "Priority", icon: <FiFlag className="mr-1" /> },
+  { key: "dueDate", label: "Due Date", icon: <FiClock className="mr-1" /> },
+  { key: "estValue", label: "Est. Value", icon: <FiDollarSign className="mr-1" /> },
+  { key: "add", label: "", icon: <FiPlus className="text-gray-500" /> },
+];
 
 interface RowData {
   request: string;
@@ -108,23 +134,16 @@ const AirtableSheet: React.FC = () => {
   <div className="min-w-[990px]">
     {/* Header */}
     <div className="grid grid-cols-[2rem_repeat(10,130px)] sticky top-0 bg-white text-gray-500 border-b border-gray-300 z-10 text-[9px]">
-      <div className="h-8 flex items-center justify-center font-medium bg-gray-100 border-r">#</div>
-      {[
-        "Job Request",
-        "Submitted",
-        "Status",
-        "Submitter",
-        "URL",
-        "Assigned",
-        "Priority",
-        "Due Date",
-        "Est. Value",
-        "", // Plus icon
-      ].map((col, i) => (
-        <div key={i} className="h-8 px-0.5 flex items-center font-semibold border-r truncate">
-          {col || <span className="text-xs font-bold">+</span>}
-        </div>
-      ))}
+      <div className="h-8 flex items-center justify-center font-medium  border-r" style={{backgroundColor:"#eeeeee"}}>#</div>
+      {columns.map((col) => (
+  <div
+    key={col.key}
+    className="h-8 flex items-center font-bold text-xs  border-r"
+   style={{backgroundColor:"#eeeeee"}}>
+    {col.icon}
+    <span className="truncate">{col.label}</span>
+  </div>
+))}
     </div>
 
     {/* Rows */}
@@ -137,7 +156,7 @@ const AirtableSheet: React.FC = () => {
           {rowIndex + 1}
         </div>
 
-        <input className="h-8 px-0.5 border-r outline-none bg-transparent truncate" value={row.request} onChange={(e) => handleChange(rowIndex, "request", e.target.value)} />
+        <input className="h-8 px-0.5 text-black items-center justify-center text-xs border-r outline-none bg-transparent truncate" value={row.request} onChange={(e) => handleChange(rowIndex, "request", e.target.value)} />
         <input className="h-8 px-0.5 border-r outline-none bg-transparent truncate" value={row.submitted} onChange={(e) => handleChange(rowIndex, "submitted", e.target.value)} />
         <div className="h-8 px-0.5 border-r flex items-center truncate">
           <span className={clsx("text-[9px] font-medium px-1 py-0.5 rounded-full", statusColorMap[row.status])}>

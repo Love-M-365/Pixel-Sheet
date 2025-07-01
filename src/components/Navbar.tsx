@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import type { ChangeEvent } from "react";
+import SecondaryNavbar from "./SecondaryNavbar";
 
 const Navbar: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
@@ -9,6 +10,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
+    <>
     <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md px-6 py-3 flex justify-between items-center">
       {/* Logo */}
       <div className="flex items-center space-x-2">
@@ -92,7 +94,10 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </div>
+     
     </header>
+     <SecondaryNavbar></SecondaryNavbar>
+     </>
   );
 };
 

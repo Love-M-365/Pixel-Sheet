@@ -62,24 +62,33 @@ const Navbar: React.FC = () => {
 
         {/* Notification */}
         <div className="relative">
-          <svg
-            className="w-6 h-6 text-black"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15 17h5l-1.4-1.4A2 2 0 0118 14v-3a6 6 0 00-12 0v3a2 2 0 01-.6 1.4L4 17h5m6 0v1a3 3 0 11-6 0v-1"
-            />
-          </svg>
-          <span className="absolute -top-1 -right-1 bg-green-700 text-white text-xs font-semibold px-1.5 py-0.5 rounded-full">
-            2
-          </span>
-        </div>
+  <button
+    type="button"
+    className="relative p-2 rounded-full bg-white hover:bg-gray-100 transition duration-200 shadow"
+  >
+    {/* Updated bell icon (better look) */}
+    <svg
+      className="w-6 h-6 text-black"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14V11a6 6 0 00-5-5.917V5a1 1 0 00-2 0v.083A6 6 0 006 11v3c0 .538-.214 1.055-.595 1.43L4 17h5m6 0v1a3 3 0 11-6 0v-1"
+      />
+    </svg>
+
+    {/* Notification badge */}
+    <span className="absolute -top-1 -right-1  text-white text-xs font-semibold px-1.5 py-0.5 rounded-full" style={{backgroundColor:"#4B6A4F"}}>
+      2
+    </span>
+  </button>
+</div>
+
 
         {/* Profile */}
         <div className="flex items-center space-x-2">

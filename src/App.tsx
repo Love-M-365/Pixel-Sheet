@@ -2,6 +2,7 @@
 import './App.css'
 import Navbar from './components/Navbar'
 import SecondaryNavbar from './components/SecondaryNavbar'
+import ExcelSheet from './components/Sheet'
 
 function App() {
  
@@ -10,7 +11,7 @@ function App() {
     <>
     
       <Navbar></Navbar>
-      
+      <ExcelSheet></ExcelSheet>
     </>
   )
 }

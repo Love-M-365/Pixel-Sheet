@@ -5,7 +5,7 @@ import share from '../assets/share.png'
 import na from '../assets/na.png'
 const SecondaryNavbar: React.FC = () => {
   return (
-    <header className="fixed top-14 left-0 w-full z-50 bg-white shadow-md px-6 py-1 flex ">
+    <header className="fixed top-14 left-0 w-full z-50 bg-white shadow-md px-6 py-1 flex  ">
     <div className="w-full bg-white border-t border-gray-200  py-2 flex justify-between items-center text-sm">
       {/* Left section */}
       <div className="flex items-center space-x-4">

@@ -1,34 +1,64 @@
 import React, { useState } from "react";
 import clsx from "clsx";
-import { FiFileText, FiCalendar, FiCheckCircle, FiUser, FiLink, FiUsers, FiFlag, FiClock, FiDollarSign, FiPlus } from "react-icons/fi";
-import briefcase from '../assets/briefcase.png'
-import submitted from '../assets/submitted.png'
+import assigned from "../assets/Shape.svg";
+import globe from "../assets/Globe.svg";
+import briefcase from "../assets/Briefcase.svg";
+import submitted from "../assets/Calendar.svg";
+import person from "../assets/Person.svg";
+import statusicon from "../assets/Chevron Circle.svg";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
+
 type StatusType = "In-process" | "Complete" | "Blocked" | "Yet to start";
 type PriorityType = "High" | "Medium" | "Low";
 
-
-
-
 const columns = [
-  { key: "request", label: "Job Request", icon: <img
-    src={briefcase}
-    alt="Briefcase"
-    className="w-4 h-4 mr-1 ml-1"
-  />
- },
-  { key: "submitted", label: "Submitted", icon: <img
-    src={submitted}
-    alt="submitted"
-    className="w-4 h-4 mr-1 ml-1"
-  /> },
-  { key: "status", label: "Status", icon: <FiCheckCircle className="mr-1" /> },
-  { key: "submitter", label: "Submitter", icon: <FiUser className="mr-1" /> },
-  { key: "url", label: "URL", icon: <FiLink className="mr-1" /> },
-  { key: "assigned", label: "Assigned", icon: <FiUsers className="mr-1" /> },
-  { key: "priority", label: "Priority", icon: <FiFlag className="mr-1" /> },
-  { key: "dueDate", label: "Due Date", icon: <FiClock className="mr-1" /> },
-  { key: "estValue", label: "Est. Value", icon: <FiDollarSign className="mr-1" /> },
-  { key: "add", label: "", icon: <FiPlus className="text-gray-500" /> },
+  {
+    key: "request",
+    label: "Job Request",
+    icon: <img src={briefcase} alt="Briefcase" className="w-4 h-4 mr-1 ml-1" />,
+  },
+  {
+    key: "submitted",
+    label: "Submitted",
+    icon: <img src={submitted} alt="submitted" className="w-4 h-4 mr-1 ml-1" />,
+  },
+  {
+    key: "status",
+    label: "Status",
+    icon: <img src={statusicon} alt="status" className="w-4 h-4 mr-1 ml-1" />,
+  },
+  {
+    key: "submitter",
+    label: "Submitter",
+    icon: <img src={person} alt="submitter" className="w-4 h-4 mr-1 ml-1" />,
+  },
+  {
+    key: "url",
+    label: "URL",
+    icon: <img src={globe} alt="url" className="w-4 h-4 mr-1 ml-1" />,
+  },
+  {
+    key: "assigned",
+    label: "Assigned",
+    icon: <img src={assigned} alt="assigned" className="w-4 h-4 mr-1 ml-1" />,
+  },
+  { key: "priority", label: "Priority", icon: <></> },
+  { key: "dueDate", label: "Due Date", icon: <></> },
+  { key: "estValue", label: "Est. Value", icon: <></> },
+  { key: "add", label: "", icon: <></> },
+];
+
+const headerColors = [
+  "#eeeeee", // Job Request
+  "#eeeeee", // Submitted
+  "#eeeeee", // Status
+  "#eeeeee", // Submitter
+  "#eeeeee", // URL
+  "#E8F0E9", // Assigned
+  "#EAE3FC", // Priority
+  "#EAE3FC", // Due Date
+  "#FFE9E0", // Est. Value
+  "#EEEEEE", // Add
 ];
 
 interface RowData {
@@ -45,8 +75,8 @@ interface RowData {
 
 const statusColorMap: Record<StatusType, string> = {
   "In-process": "bg-yellow-100 text-yellow-800",
-  "Complete": "bg-green-100 text-green-800",
-  "Blocked": "bg-red-100 text-red-800",
+  Complete: "bg-green-100 text-green-800",
+  Blocked: "bg-red-100 text-red-800",
   "Yet to start": "bg-blue-100 text-blue-800",
 };
 
@@ -129,93 +159,84 @@ const AirtableSheet: React.FC = () => {
     };
     setData(updated);
   };
+
   return (
-   <div className="w-screen h-screen overflow-auto bg-gray-50 fixed top-14 left-3" style={{ marginTop: "6rem" }}>
-  <div className="min-w-[990px]">
-    {/* Header */}
-    <div className="grid grid-cols-[2rem_repeat(10,130px)] sticky top-0 bg-white text-gray-500 border-b border-gray-300 z-10 text-[9px]">
-      <div className="h-8 flex items-center justify-center font-medium  border-r" style={{backgroundColor:"#eeeeee"}}>#</div>
-      {columns.map((col) => (
-  <div
-    key={col.key}
-    className="h-8 flex items-center font-bold text-xs  border-r"
-   style={{backgroundColor:"#eeeeee"}}>
-    {col.icon}
-    <span className="truncate">{col.label}</span>
-  </div>
-))}
-    </div>
-
-    {/* Rows */}
-    {data.map((row, rowIndex) => (
-      <div
-        key={rowIndex}
-        className="grid grid-cols-[2rem_repeat(10,130px)] border-b border-gray-200 bg-white hover:bg-gray-50 text-[9px]"
-      >
-        <div className="h-8 flex items-center justify-center text-gray-500 border-r bg-gray-100">
-          {rowIndex + 1}
+    <div className="w-screen h-screen overflow-auto bg-gray-50 fixed top-14 left-0" style={{ marginTop: "6rem" }}>
+      <div className="min-w-[1000px]">
+        {/* Header */}
+        <div className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)] sticky top-0 bg-white text-gray-500 border-b border-gray-300 z-10 text-[10px]">
+          <div className="h-9 flex items-center justify-center font-medium border-r bg-[#eeeeee]">#</div>
+          {columns.map((col, index) => (
+            <div
+              key={col.key}
+              className="h-9 flex items-center justify-between px-2 font-semibold text-xs border-r"
+              style={{ backgroundColor: headerColors[index] }}
+            >
+              <div className="flex items-center space-x-1 truncate">
+                {col.icon}
+                <span className="truncate">{col.label}</span>
+              </div>
+              <button className="  px-1 bg-transparent rounded-md text-gray-700 flex items-center space-x-1 ">
+      <ChevronDownIcon className="w-3 h-3" />
+    </button>
+            </div>
+          ))}
         </div>
 
-        <input className="h-8 px-0.5 text-black items-center justify-center text-xs border-r outline-none bg-transparent truncate" value={row.request} onChange={(e) => handleChange(rowIndex, "request", e.target.value)} />
-        <input className="h-8 px-0.5 border-r outline-none bg-transparent truncate" value={row.submitted} onChange={(e) => handleChange(rowIndex, "submitted", e.target.value)} />
-        <div className="h-8 px-0.5 border-r flex items-center truncate">
-          <span className={clsx("text-[9px] font-medium px-1 py-0.5 rounded-full", statusColorMap[row.status])}>
-            {row.status}
-          </span>
-        </div>
-        <input className="h-8 px-0.5 border-r outline-none bg-transparent truncate" value={row.submitter} onChange={(e) => handleChange(rowIndex, "submitter", e.target.value)} />
-        <input className="h-8 px-0.5 border-r outline-none bg-transparent text-blue-600 underline truncate" value={row.url} onChange={(e) => handleChange(rowIndex, "url", e.target.value)} />
-        <input className="h-8 px-0.5 border-r outline-none bg-transparent truncate" value={row.assigned} onChange={(e) => handleChange(rowIndex, "assigned", e.target.value)} />
-        <div className="h-8 px-0.5 border-r flex items-center font-semibold truncate">
-          <span className={clsx(priorityColorMap[row.priority])}>{row.priority}</span>
-        </div>
-        <input className="h-8 px-0.5 border-r outline-none bg-transparent truncate" value={row.dueDate} onChange={(e) => handleChange(rowIndex, "dueDate", e.target.value)} />
-        <div className="h-8 px-0.5 border-r flex items-center truncate">{row.estValue} ₹</div>
+        {/* Rows */}
+        {data.map((row, rowIndex) => (
+          <div
+            key={rowIndex}
+            className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)] border-b border-gray-200 bg-white hover:bg-gray-50 text-[8px]"
+          >
+            <div className="h-9 flex items-center justify-center  text-gray-500 border-r bg-gray-100">
+              {rowIndex + 1}
+            </div>
+            <input className="h-9 px-1 text-black text-xs  border-r outline-none bg-transparent truncate" value={row.request} onChange={(e) => handleChange(rowIndex, "request", e.target.value)} />
+            <input className="h-9 px-1 border-r text-black text-xs text-right outline-none bg-transparent truncate" value={row.submitted} onChange={(e) => handleChange(rowIndex, "submitted", e.target.value)} />
+            <div className="h-9 px-1 border-r flex items-center truncate">
+              <span className={clsx("text-[9px] font-medium px-1 py-0.5 rounded-full", statusColorMap[row.status])}>
+                {row.status}
+              </span>
+            </div>
+            <input className="h-9 px-1 border-r outline-none bg-transparent truncate" value={row.submitter} onChange={(e) => handleChange(rowIndex, "submitter", e.target.value)} />
+            <input className="h-9 px-1 border-r outline-none bg-transparent text-blue-600 underline truncate" value={row.url} onChange={(e) => handleChange(rowIndex, "url", e.target.value)} />
+            <input className="h-9 px-1 border-r outline-none bg-transparent truncate" value={row.assigned} onChange={(e) => handleChange(rowIndex, "assigned", e.target.value)} />
+            <div className="h-9 px-1 border-r flex items-center font-semibold truncate">
+              <span className={clsx(priorityColorMap[row.priority])}>{row.priority}</span>
+            </div>
+            <input className="h-9 px-1 border-r outline-none bg-transparent truncate" value={row.dueDate} onChange={(e) => handleChange(rowIndex, "dueDate", e.target.value)} />
+            <div className="h-9 px-1 border-r flex items-center truncate">{row.estValue} ₹</div>
+            <div className="h-9 flex items-center justify-center text-gray-400 hover:text-gray-600 border-r cursor-pointer">
+              +
+            </div>
+          </div>
+        ))}
 
-        {/* Plus column */}
-        <div className="h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 border-r cursor-pointer">
-          +
-        </div>
+        {/* Empty Rows */}
+        {[...Array(8)].map((_, i) => {
+          const rowIndex = data.length + i;
+          return (
+            <div
+              key={`empty-${i}`}
+              className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)] border-b border-gray-200 bg-white hover:bg-gray-50 text-[8px]"
+            >
+              <div className="h-9 flex items-center justify-center text-gray-500 border-r bg-gray-100">
+                {rowIndex + 1}
+              </div>
+              {[...Array(10)].map((_, colIndex) => (
+                <input
+                  key={colIndex}
+                  className="h-9 px-1 border-r outline-none bg-transparent truncate"
+                  value=""
+                  readOnly
+                />
+              ))}
+            </div>
+          );
+        })}
       </div>
-    ))}
-   {[...Array(8)].map((_, i) => {
-  const rowIndex = data.length + i;
-  return (
-    <div
-      key={`empty-${i}`}
-      className="grid grid-cols-[2rem_repeat(10,130px)] border-b border-gray-200 bg-white hover:bg-gray-50 text-[9px]"
-    >
-      <div className="h-8 flex items-center justify-center text-gray-500 border-r bg-gray-100">
-        {rowIndex + 1}
-      </div>
-
-      {[
-        "request",
-        "submitted",
-        "status",
-        "submitter",
-        "url",
-        "assigned",
-        "priority",
-        "dueDate",
-        "estValue",
-        "add",
-      ].map((col, colIndex) => (
-        <input
-          key={colIndex}
-          className="h-8 px-0.5 border-r outline-none bg-transparent truncate"
-          value=""
-          readOnly
-        />
-      ))}
     </div>
-  );
-})}
-
-  </div>
-</div>
-
-
   );
 };
 

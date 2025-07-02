@@ -58,7 +58,7 @@ const headerColors = [
   "#EAE3FC", // Priority
   "#EAE3FC", // Due Date
   "#FFE9E0", // Est. Value
-  "#EEEEEE", // Add
+  "white", // Add
 ];
 
 interface RowData {
@@ -192,23 +192,23 @@ const AirtableSheet: React.FC = () => {
             <div className="h-9 flex items-center justify-center  text-gray-500 border-r bg-gray-100">
               {rowIndex + 1}
             </div>
-            <input className="h-9 px-1 text-black text-xs  border-r outline-none bg-transparent truncate" value={row.request} onChange={(e) => handleChange(rowIndex, "request", e.target.value)} />
-            <input className="h-9 px-1 border-r text-black text-xs text-right outline-none bg-transparent truncate" value={row.submitted} onChange={(e) => handleChange(rowIndex, "submitted", e.target.value)} />
-            <div className="h-9 px-1 border-r flex items-center truncate">
-              <span className={clsx("text-[9px] font-medium px-1 py-0.5 rounded-full", statusColorMap[row.status])}>
+            <input className="h-9 px-1 text-black  text-xs border-r outline-none bg-transparent truncate" value={row.request} onChange={(e) => handleChange(rowIndex, "request", e.target.value)} />
+            <input className="h-9 px-1 w-full border-r text-black text-xs text-right outline-none bg-transparent truncate" value={row.submitted} onChange={(e) => handleChange(rowIndex, "submitted", e.target.value)} />
+            <div className="h-9 px-1 border-r flex text-center justify-center items-center truncate">
+              <span className={clsx("text-xs text-center font-medium px-1 py-0.5 rounded-full", statusColorMap[row.status])}>
                 {row.status}
               </span>
             </div>
-            <input className="h-9 px-1 border-r outline-none bg-transparent truncate" value={row.submitter} onChange={(e) => handleChange(rowIndex, "submitter", e.target.value)} />
-            <input className="h-9 px-1 border-r outline-none bg-transparent text-blue-600 underline truncate" value={row.url} onChange={(e) => handleChange(rowIndex, "url", e.target.value)} />
-            <input className="h-9 px-1 border-r outline-none bg-transparent truncate" value={row.assigned} onChange={(e) => handleChange(rowIndex, "assigned", e.target.value)} />
-            <div className="h-9 px-1 border-r flex items-center font-semibold truncate">
+            <input className="h-9 text-black text-xs w-full px-1 border-r outline-none bg-transparent truncate" value={row.submitter} onChange={(e) => handleChange(rowIndex, "submitter", e.target.value)} />
+            <input className="h-9 px-1 border-r text-xs w-full outline-none bg-transparent text-blue-600 underline truncate" value={row.url} onChange={(e) => handleChange(rowIndex, "url", e.target.value)} />
+            <input className="h-9 px-1 border-r text-xs w-full text-black outline-none bg-transparent truncate" value={row.assigned} onChange={(e) => handleChange(rowIndex, "assigned", e.target.value)} />
+            <div className="h-9 px-1 border-r text-xs w-full text-center justify-center flex items-center font-semibold truncate">
               <span className={clsx(priorityColorMap[row.priority])}>{row.priority}</span>
             </div>
-            <input className="h-9 px-1 border-r outline-none bg-transparent truncate" value={row.dueDate} onChange={(e) => handleChange(rowIndex, "dueDate", e.target.value)} />
-            <div className="h-9 px-1 border-r flex items-center truncate">{row.estValue} ₹</div>
+            <input className="h-9 px-1 border-r text-xs w-full text-black justify-center items-center text-right outline-none bg-transparent truncate" value={row.dueDate} onChange={(e) => handleChange(rowIndex, "dueDate", e.target.value)} />
+            <div className="h-9 px-1 border-r text-black justify-end items-center text-right flex text-xs w-full truncate">{row.estValue} <span style={{color:"grey",marginLeft:"0.5rem",textAlign:"right"}}>₹</span></div>
             <div className="h-9 flex items-center justify-center text-gray-400 hover:text-gray-600 border-r cursor-pointer">
-              +
+              
             </div>
           </div>
         ))}

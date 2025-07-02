@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import type { ChangeEvent } from "react";
 import SecondaryNavbar from "./SecondaryNavbar";
-
+import more from "../assets/More.svg"
+import profileimage from "../assets/Ellipse 1.png"
 const Navbar: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
 
@@ -28,7 +29,9 @@ const Navbar: React.FC = () => {
     <span>Folder 2</span>
     <span className="text-gray-400">›</span>
     <span className="text-black font-medium">Spreadsheet 3</span>
-    <span className="text-gray-400">...</span>
+     <div className="flex items-center justify-center ">
+        <img src={more} alt="more"  className="w-5 h-5" />
+      </div>
   </div>
 </div>
 
@@ -93,7 +96,7 @@ const Navbar: React.FC = () => {
         {/* Profile */}
         <div className="flex items-center space-x-2">
           <img
-            src="https://i.pravatar.cc/300"
+            src={profileimage}
             alt="User Profile"
             className="w-8 h-8 rounded-full object-cover border border-gray-300"
           />

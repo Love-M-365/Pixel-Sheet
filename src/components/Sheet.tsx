@@ -6,9 +6,13 @@ import briefcase from "../assets/Briefcase.svg";
 import submitted from "../assets/Calendar.svg";
 import person from "../assets/Person.svg";
 import statusicon from "../assets/Chevron Circle.svg";
-import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import { ChevronDownIcon  ,ArrowPathIcon } from "@heroicons/react/24/solid";
+import link from '../assets/Link.svg'
+import arrowsplit from '../assets/Arrow Split.svg'
+import arrowsplitwhite from '../assets/Arrow Split White.svg'
+import more from "../assets/More.svg"
 
-type StatusType = "In-process" | "Complete" | "Blocked" | "Yet to start";
+type StatusType = "In-process" | "Complete" | "Blocked" | "Need to start";
 type PriorityType = "High" | "Medium" | "Low";
 
 const columns = [
@@ -80,10 +84,10 @@ interface RowData {
 }
 
 const statusColorMap: Record<StatusType, string> = {
-  "In-process": "bg-yellow-100 text-yellow-800",
-  Complete: "bg-green-100 text-green-800",
-  Blocked: "bg-red-100 text-red-800",
-  "Yet to start": "bg-blue-100 text-blue-800",
+  "In-process": "bg-[#FFF3D6] text-[#85640B]",
+  Complete: "bg-[#D3F2E3] text-[#0A6E3D]",
+  Blocked: "bg-[#FFE1DE] text-red-700",
+  "Need to start": "bg-[#E2E8F0] text-[#475569]",
 };
 
 const priorityColorMap: Record<PriorityType, string> = {
@@ -107,7 +111,7 @@ const initialData: RowData[] = [
   {
     request: "Update press kit for company redesign",
     submitted: "28-10-2024",
-    status: "Yet to start",
+    status: "Need to start",
     submitter: "Irfan Khan",
     url: "www.irfankhan.com",
     assigned: "Tejas Pandey",
@@ -167,11 +171,92 @@ const AirtableSheet: React.FC = () => {
   };
 
   return (
-    <div className="w-screen h-screen overflow-auto bg-gray-50 fixed top-14 left-0" style={{ marginTop: "6rem" }}>
+    <div className="w-screen h-screen overflow-auto bg-gray-50 fixed top-5 left-0" style={{ marginTop: "6rem" }}>
       <div className="min-w-[1000px]">
+        {/* Tab Row above headers */}
+<div className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)] bg-white text-gray-700 text-[11px] font-medium border-b border-gray-300">
+  {/* Empty cell for row number column */}
+  <div className="h-9 border-r bg-[white]"></div>
+
+  {/* Tab spanning 4 columns (Job Request to Submitter) */}
+  <div className="col-span-4 h-9 flex items-center px-3 border-r rounded-t border-2 border-b-0 bg-[#E2E2E2] text-purple-600">
+    <button className="inline-flex items-center px-3 py-1 bg-gray-100 text-[#545454] rounded-md text-xs font-medium border border-gray-200 shadow-sm hover:bg-gray-200">
+      <img
+  src={link}
+  alt="Link icon"
+  className="w-4 h-4 mr-1 text-blue-500"
+/>
+
+      Q3 Financial Overview
+    </button>
+     <button className="p-1 ml-2 bg-transparent  ">
+      <ArrowPathIcon className="w-5 h-5 text-orange-500" />
+    </button>
+  </div>
+
+  
+    <div key={5} className="h-9 border-r bg-[white]"></div>
+    <div key={6} className="h-9 border-r flex justify-center items-center bg-[#D2E0D4]">
+        <button className="flex items-center justify-center text-center gap-2 px-3 py-1.5 bg-[#D2E0D4] rounded-md text-xs font-semibold text-[#505450] ">
+  
+  <img src={arrowsplit} alt="arrow split"  className="w-5 h-5 fill-[#505450]" />
+
+  
+  <span>ABC</span>
+
+  
+  <div className="flex items-center justify-center ">
+    <img src={more} alt="more"  className="w-5 h-5" />
+  </div>
+</button>
+
+    </div>
+    <div  className="col-span-2 h-9 flex justify-center items-center px-3 border-r rounded-t border-2 border-b-0 bg-[#DCCFFC] text-[#463E59]">
+        <button className="flex items-center justify-center text-center gap-2 px-3 py-1.5 bg-transparent rounded-md text-xs font-semibold text-[#505450] ">
+  
+  <img src={arrowsplitwhite} alt="arrow split"  className="w-5 h-5 " />
+
+  
+  <span>Answer a question</span>
+
+  
+  
+  <div className="flex items-center justify-center ">
+    <img src={more} alt="more"  className="w-5 h-5" />
+  </div>
+</button>
+
+    </div>
+    <div key={9} className="h-9 border-r flex justify-center items-center bg-[#FAC2AF]">
+        <button className="flex items-center justify-center text-center gap-2 px-3 py-1.5 bg-transparent rounded-md text-xs font-semibold text-[#505450] ">
+  
+  <img src={arrowsplitwhite} alt="arrow split"  className="w-5 h-5" />
+
+  
+  <span>Extract</span>
+
+  
+  
+  <div className="flex items-center justify-center ">
+    <img src={more} alt="more"  className="w-5 h-5" />
+  </div>
+</button>
+
+    </div>
+    <div key={10} className="h-9 border-r flex justify-center items-center bg-[#EEEEEE]">
+        <button className="w-12 h-12 flex items-center justify-center bg-transparent rounded-sm">
+  <svg className="w-10 h-10 text-[#04071E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+  </svg>
+</button>
+
+    </div>
+  
+</div>
+
         {/* Header */}
       <div className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)] sticky top-0 bg-white text-gray-500 border-b border-gray-300 z-10 text-[10px]">
-  <div className="h-9 flex items-center justify-center font-medium border-r bg-[#eeeeee]">#</div>
+  <div className="h-9 flex text-[15px] items-center justify-center font-medium border-r bg-[#eeeeee]">#</div>
 
   {columns.map((col, index) => (
     <div
@@ -201,7 +286,7 @@ const AirtableSheet: React.FC = () => {
             key={rowIndex}
             className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)] border-b border-gray-200 bg-white hover:bg-gray-50 text-[8px]"
           >
-            <div className="h-9 flex items-center justify-center  text-gray-500 border-r bg-gray-100">
+            <div className="h-9 flex items-center justify-center  text-gray-500 border-r bg-[white]">
               {rowIndex + 1}
             </div>
             <input className="h-9 px-1 text-black  text-xs border-r outline-none bg-transparent truncate" value={row.request} onChange={(e) => handleChange(rowIndex, "request", e.target.value)} />
@@ -233,7 +318,7 @@ const AirtableSheet: React.FC = () => {
               key={`empty-${i}`}
               className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)] border-b border-gray-200 bg-white hover:bg-gray-50 text-[8px]"
             >
-              <div className="h-9 flex items-center justify-center text-gray-500 border-r bg-gray-100">
+              <div className="h-9 flex items-center justify-center text-gray-500 border-r bg-[white]">
                 {rowIndex + 1}
               </div>
               {[...Array(10)].map((_, colIndex) => (

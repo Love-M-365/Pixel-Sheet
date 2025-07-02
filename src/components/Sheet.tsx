@@ -16,36 +16,42 @@ const columns = [
     key: "request",
     label: "Job Request",
     icon: <img src={briefcase} alt="Briefcase" className="w-4 h-4 mr-1 ml-1" />,
+    hasDropdown: true,
   },
   {
     key: "submitted",
     label: "Submitted",
     icon: <img src={submitted} alt="submitted" className="w-4 h-4 mr-1 ml-1" />,
+    hasDropdown: true,
   },
   {
     key: "status",
     label: "Status",
     icon: <img src={statusicon} alt="status" className="w-4 h-4 mr-1 ml-1" />,
+    hasDropdown: true,
   },
   {
     key: "submitter",
     label: "Submitter",
     icon: <img src={person} alt="submitter" className="w-4 h-4 mr-1 ml-1" />,
+    hasDropdown: true,
   },
   {
     key: "url",
     label: "URL",
     icon: <img src={globe} alt="url" className="w-4 h-4 mr-1 ml-1" />,
+    hasDropdown: true,
   },
   {
     key: "assigned",
     label: "Assigned",
     icon: <img src={assigned} alt="assigned" className="w-4 h-4 mr-1 ml-1" />,
+    hasDropdown: false,
   },
-  { key: "priority", label: "Priority", icon: <></> },
-  { key: "dueDate", label: "Due Date", icon: <></> },
-  { key: "estValue", label: "Est. Value", icon: <></> },
-  { key: "add", label: "", icon: <></> },
+  { key: "priority", label: "Priority", icon: <></>,hasDropdown: false, },
+  { key: "dueDate", label: "Due Date", icon: <></>,hasDropdown: false, },
+  { key: "estValue", label: "Est. Value", icon: <></>,hasDropdown: false, },
+  { key: "add", label: "", icon: <></>,hasDropdown: false, },
 ];
 
 const headerColors = [
@@ -164,24 +170,30 @@ const AirtableSheet: React.FC = () => {
     <div className="w-screen h-screen overflow-auto bg-gray-50 fixed top-14 left-0" style={{ marginTop: "6rem" }}>
       <div className="min-w-[1000px]">
         {/* Header */}
-        <div className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)] sticky top-0 bg-white text-gray-500 border-b border-gray-300 z-10 text-[10px]">
-          <div className="h-9 flex items-center justify-center font-medium border-r bg-[#eeeeee]">#</div>
-          {columns.map((col, index) => (
-            <div
-              key={col.key}
-              className="h-9 flex items-center justify-between px-2 font-semibold text-xs border-r"
-              style={{ backgroundColor: headerColors[index] }}
-            >
-              <div className="flex items-center space-x-1 truncate">
-                {col.icon}
-                <span className="truncate">{col.label}</span>
-              </div>
-              <button className="  px-1 bg-transparent rounded-md text-gray-700 flex items-center space-x-1 ">
-      <ChevronDownIcon className="w-3 h-3" />
-    </button>
-            </div>
-          ))}
-        </div>
+      <div className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)] sticky top-0 bg-white text-gray-500 border-b border-gray-300 z-10 text-[10px]">
+  <div className="h-9 flex items-center justify-center font-medium border-r bg-[#eeeeee]">#</div>
+
+  {columns.map((col, index) => (
+    <div
+      key={col.key}
+      className="h-9 flex items-center justify-between px-2 font-semibold text-xs border-r"
+      style={{ backgroundColor: headerColors[index] }}
+    >
+      <div className="flex items-center space-x-1 truncate">
+        {col.icon}
+        <span className="truncate">{col.label}</span>
+      </div>
+
+      {/* ✅ Show dropdown only if hasDropdown is true */}
+      {col.hasDropdown && (
+        <button className="px-1 bg-transparent rounded-md text-gray-700 flex items-center">
+          <ChevronDownIcon className="w-3 h-3" />
+        </button>
+      )}
+    </div>
+  ))}
+</div>
+
 
         {/* Rows */}
         {data.map((row, rowIndex) => (
@@ -200,7 +212,7 @@ const AirtableSheet: React.FC = () => {
               </span>
             </div>
             <input className="h-9 text-black text-xs w-full px-1 border-r outline-none bg-transparent truncate" value={row.submitter} onChange={(e) => handleChange(rowIndex, "submitter", e.target.value)} />
-            <input className="h-9 px-1 border-r text-xs w-full outline-none bg-transparent text-blue-600 underline truncate" value={row.url} onChange={(e) => handleChange(rowIndex, "url", e.target.value)} />
+            <input className="h-9 px-1 border-r text-xs w-full outline-none bg-transparent text-black underline truncate" value={row.url} onChange={(e) => handleChange(rowIndex, "url", e.target.value)} />
             <input className="h-9 px-1 border-r text-xs w-full text-black outline-none bg-transparent truncate" value={row.assigned} onChange={(e) => handleChange(rowIndex, "assigned", e.target.value)} />
             <div className="h-9 px-1 border-r text-xs w-full text-center justify-center flex items-center font-semibold truncate">
               <span className={clsx(priorityColorMap[row.priority])}>{row.priority}</span>

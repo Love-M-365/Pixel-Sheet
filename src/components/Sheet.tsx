@@ -6,11 +6,13 @@ import briefcase from "../assets/Briefcase.svg";
 import submitted from "../assets/Calendar.svg";
 import person from "../assets/Person.svg";
 import statusicon from "../assets/Chevron Circle.svg";
-import { ChevronDownIcon  ,ArrowPathIcon } from "@heroicons/react/24/solid";
+import { ChevronDownIcon  } from "@heroicons/react/24/solid";
 import link from '../assets/Link.svg'
+import reload from '../assets/Arrow Sync.svg'
 import arrowsplit from '../assets/Arrow Split.svg'
 import arrowsplitwhite from '../assets/Arrow Split White.svg'
 import more from "../assets/More.svg"
+import addicon from "../assets/Add.svg"
 
 
 type StatusType = "In-process" | "Complete" | "Blocked" | "Need to start";
@@ -172,42 +174,44 @@ const AirtableSheet: React.FC = () => {
   };
 
   return (
-    <div className="w-screen h-screen overflow-auto bg-gray-50 fixed top-3 left-0" style={{ marginTop: "6rem" }}>
+    <div className="w-screen h-screen  bg-gray-50 fixed overflow-auto top-[104px] left-0" >
       <div className="min-w-[1000px]">
         {/* Tab Row above headers */}
-<div className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)]  bg-white text-gray-700 text-[11px] font-medium border-b border-gray-300">
+<div className="grid   grid-cols-[2rem_2fr_repeat(9,1.3fr)] h-[32px] bg-white text-gray-700  border-b border-gray-300">
   {/* Empty cell for row number column */}
-  <div className="h-9 border-r bg-[white]"></div>
+  <div className="h-[32px] border-r w-[32px] bg-[white]"></div>
 
   {/* Tab spanning 4 columns (Job Request to Submitter) */}
-  <div className="col-span-4 h-9 flex items-center px-3 border-r rounded-t border-2 border-b-0 bg-[#E2E2E2] text-purple-600">
-    <button className="inline-flex items-center px-3 py-1 bg-gray-100 text-[#545454] rounded-md text-xs font-medium border border-gray-200 shadow-sm hover:bg-gray-200">
+  <div className="col-span-4  flex items-center  px-2 border-r rounded-t border-2 border-b-0 bg-[#E2E2E2] ">
+    <button className="inline-flex items-center justify-center  bg-gray-100 text-[#545454] rounded-md px-1 font-normal py-1  border h-[24px] w-[158px] border-gray-200 shadow-sm hover:bg-gray-200 text-[12px] space-x-1">
       <img
   src={link}
   alt="Link icon"
-  className="w-4 h-4 mr-1 text-blue-500"
+  className=" w-[16px] mr-[2px] h-[16px] "
 />
 
-      Q3 Financial Overview
+    Q3 Financial Overview
+
+      
     </button>
      <button className="p-1 ml-2 bg-transparent  ">
-      <ArrowPathIcon className="w-5 h-5 text-orange-500" />
+      <img src={reload} className="w-[16px] h-[16px] " />
     </button>
   </div>
 
   
     <div key={5} className="h-9 border-r bg-[white]"></div>
     <div key={6} className="h-9 border-r flex justify-center items-center bg-[#D2E0D4]">
-        <button className="flex items-center justify-center text-center gap-2 px-3 py-1.5 bg-[#D2E0D4] rounded-md text-xs font-semibold text-[#505450] ">
+        <button className="flex items-center justify-center text-center gap-2 px-3 py-1.5 bg-[#D2E0D4] rounded-md text-[14px] font-semibold text-[#505450] ">
   
-  <img src={arrowsplit} alt="arrow split"  className="w-5 h-5 fill-[#505450]" />
+  <img src={arrowsplit} alt="arrow split"  className="w-[16px] h-[16px] fill-[#505450]" />
 
   
   <span>ABC</span>
 
   
   <div className="flex items-center justify-center ">
-    <img src={more} alt="more"  className="w-5 h-5" />
+    <img src={more} alt="more"  className="w-[16px] h-[16px]" />
   </div>
 </button>
 
@@ -215,40 +219,38 @@ const AirtableSheet: React.FC = () => {
     <div  className="col-span-2 h-9 flex justify-center items-center px-3 border-r rounded-t border-2 border-b-0 bg-[#DCCFFC] text-[#463E59]">
         <button className="flex items-center justify-center text-center gap-2 px-3 py-1.5 bg-transparent rounded-md text-xs font-semibold text-[#505450] ">
   
-  <img src={arrowsplitwhite} alt="arrow split"  className="w-5 h-5 " />
+  <img src={arrowsplitwhite} alt="arrow split"  className="w-[16px] h-[16px] " />
 
   
-  <span>Answer a question</span>
+  <span  className=" text-[14px]">Answer a question</span>
 
   
   
   <div className="flex items-center justify-center ">
-    <img src={more} alt="more"  className="w-5 h-5" />
+    <img src={more} alt="more"  className="w-[16px] h-[16px]" />
   </div>
 </button>
 
     </div>
     <div key={9} className="h-9 border-r flex justify-center items-center bg-[#FAC2AF]">
-        <button className="flex items-center justify-center text-center gap-2 px-3 py-1.5 bg-transparent rounded-md text-xs font-semibold text-[#505450] ">
+        <button className="flex text-[14px] items-center justify-center text-center gap-2 px-3 py-1.5 bg-transparent rounded-md text-xs font-semibold text-[#505450] ">
   
-  <img src={arrowsplitwhite} alt="arrow split"  className="w-5 h-5" />
+  <img src={arrowsplitwhite} alt="arrow split"  className="w-[16px] h-[16px]" />
 
   
-  <span>Extract</span>
+  <span className=" text-[14px]">Extract</span>
 
   
   
   <div className="flex items-center justify-center ">
-    <img src={more} alt="more"  className="w-5 h-5" />
+    <img src={more} alt="more"  className="w-[16px] h-[16px]" />
   </div>
 </button>
 
     </div>
     <div key={10} className="h-9 border-r flex justify-center items-center bg-[#EEEEEE]">
-        <button className="w-12 h-12 flex items-center justify-center bg-transparent rounded-sm">
-  <svg className="w-10 h-10 text-[#04071E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-  </svg>
+        <button className="w-[22px] h-[22px] p-0 flex items-center justify-center bg-transparent ">
+  <img src={addicon} alt="add " className="w-[20px] h-[20px]"></img>
 </button>
 
     </div>
@@ -256,13 +258,13 @@ const AirtableSheet: React.FC = () => {
 </div>
 
         {/* Header */}
-      <div className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)] sticky top-0 bg-white text-gray-500 border-b border-gray-300 z-10 text-[10px]">
+      <div className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)] sticky mt-[5px] bg-white text-gray-500 border-b border-gray-300 z-10 text-[10px]">
   <div className="h-9 flex text-[15px] items-center justify-center font-medium border-r bg-[#eeeeee]">#</div>
 
   {columns.map((col, index) => (
     <div
       key={col.key}
-      className="h-9 flex items-center justify-between px-2 font-semibold text-xs border-r"
+      className="h-9 flex items-center  justify-between px-2 font-semibold text-xs border-r"
       style={{ backgroundColor: headerColors[index] }}
     >
       <div className="flex items-center space-x-1 truncate">

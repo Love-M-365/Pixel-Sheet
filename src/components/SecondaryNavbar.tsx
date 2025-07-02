@@ -1,12 +1,13 @@
 import React from "react";
-import { EyeSlashIcon ,ArrowsUpDownIcon  } from '@heroicons/react/24/outline';
+import {  ArrowsUpDownIcon  } from '@heroicons/react/24/outline';
 import callveiw from '../assets/callview.png'
+import eye from '../assets/Eye.svg'
 import share from '../assets/share.png'
-import na from '../assets/na.png'
+import arrowsplitwhite from '../assets/Arrow Split White.svg'
 const SecondaryNavbar: React.FC = () => {
   return (
-    <header className="fixed top-14 left-0 w-full z-50 bg-white shadow-sm px-6 py-1 flex  ">
-    <div className="w-full bg-white border-t border-gray-200  py-2 flex justify-between items-center text-sm">
+    <header className="fixed top-14 left-0 w-full z-50 bg-white shadow-sm px-2 py-1 flex  ">
+    <div className="w-full bg-white border-t border-gray-200  py-1 flex justify-between items-center text-sm">
       {/* Left section */}
       <div className="flex items-center space-x-4">
         <button className="bg-white  px-3 py-1 rounded-md text-gray-700 flex items-center space-x-1">
@@ -18,7 +19,11 @@ const SecondaryNavbar: React.FC = () => {
         <div className="w-px h-8 bg-gray-200" />
 
         <button className="bg-white  px-2 py-1 rounded-md text-gray-700 flex items-center space-x-1">
-      <EyeSlashIcon className="w-5 h-5" />
+       <img
+    src={eye}
+    alt="eye"
+    className="w-5 h-5"
+  />
       <span>Hide fields</span>
     </button>
 
@@ -99,11 +104,7 @@ const SecondaryNavbar: React.FC = () => {
     </button>
 
         <button className=" text-white px-4 py-1.5 rounded-md flex items-center space-x-1 font-medium" style={{backgroundColor:"#4B6A4F"}}>
-           <img
-        src={na}
-        alt="new action"
-        className="w-5 h-5"
-      />
+          <img src={arrowsplitwhite} alt="arrow split"  className="w-5 h-5" />
           <span>New Action</span>
         </button>
       </div>

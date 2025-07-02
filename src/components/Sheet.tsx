@@ -12,6 +12,7 @@ import arrowsplit from '../assets/Arrow Split.svg'
 import arrowsplitwhite from '../assets/Arrow Split White.svg'
 import more from "../assets/More.svg"
 
+
 type StatusType = "In-process" | "Complete" | "Blocked" | "Need to start";
 type PriorityType = "High" | "Medium" | "Low";
 
@@ -171,10 +172,10 @@ const AirtableSheet: React.FC = () => {
   };
 
   return (
-    <div className="w-screen h-screen overflow-auto bg-gray-50 fixed top-5 left-0" style={{ marginTop: "6rem" }}>
+    <div className="w-screen h-screen overflow-auto bg-gray-50 fixed top-3 left-0" style={{ marginTop: "6rem" }}>
       <div className="min-w-[1000px]">
         {/* Tab Row above headers */}
-<div className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)] bg-white text-gray-700 text-[11px] font-medium border-b border-gray-300">
+<div className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)]  bg-white text-gray-700 text-[11px] font-medium border-b border-gray-300">
   {/* Empty cell for row number column */}
   <div className="h-9 border-r bg-[white]"></div>
 
@@ -286,7 +287,7 @@ const AirtableSheet: React.FC = () => {
             key={rowIndex}
             className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)] border-b border-gray-200 bg-white hover:bg-gray-50 text-[8px]"
           >
-            <div className="h-9 flex items-center justify-center  text-gray-500 border-r bg-[white]">
+            <div className="h-9 flex text-xs items-center justify-center  text-gray-500 border-r bg-[white]">
               {rowIndex + 1}
             </div>
             <input className="h-9 px-1 text-black  text-xs border-r outline-none bg-transparent truncate" value={row.request} onChange={(e) => handleChange(rowIndex, "request", e.target.value)} />
@@ -311,14 +312,14 @@ const AirtableSheet: React.FC = () => {
         ))}
 
         {/* Empty Rows */}
-        {[...Array(8)].map((_, i) => {
+        {[...Array(12)].map((_, i) => {
           const rowIndex = data.length + i;
           return (
             <div
               key={`empty-${i}`}
               className="grid grid-cols-[2rem_2fr_repeat(9,1.3fr)] border-b border-gray-200 bg-white hover:bg-gray-50 text-[8px]"
             >
-              <div className="h-9 flex items-center justify-center text-gray-500 border-r bg-[white]">
+              <div className="h-9 flex items-center text-xs justify-center text-gray-500 border-r bg-[white]">
                 {rowIndex + 1}
               </div>
               {[...Array(10)].map((_, colIndex) => (
@@ -333,6 +334,7 @@ const AirtableSheet: React.FC = () => {
           );
         })}
       </div>
+     
     </div>
   );
 };

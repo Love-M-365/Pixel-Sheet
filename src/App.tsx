@@ -1,5 +1,6 @@
 
 import './App.css'
+import FooterTabs from './components/Footer'
 import Navbar from './components/Navbar'
 
 import ExcelSheet from './components/Sheet'
@@ -12,6 +13,7 @@ function App() {
     
       <Navbar></Navbar>
       <ExcelSheet></ExcelSheet>
+      <FooterTabs></FooterTabs>
     </>
   )
 }

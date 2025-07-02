@@ -3,6 +3,7 @@ import type { ChangeEvent } from "react";
 import SecondaryNavbar from "./SecondaryNavbar";
 import more from "../assets/More.svg"
 import profileimage from "../assets/Ellipse 1.png"
+import alerticon from "../assets/Alert.svg"
 const Navbar: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
 
@@ -67,23 +68,10 @@ const Navbar: React.FC = () => {
         <div className="relative">
   <button
     type="button"
-    className="relative p-2 rounded-full bg-white hover:bg-gray-100 transition duration-200 shadow"
+    className="relative p-2 rounded-full bg-white transition duration-200 "
   >
     {/* Updated bell icon (better look) */}
-    <svg
-      className="w-6 h-6 text-black"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14V11a6 6 0 00-5-5.917V5a1 1 0 00-2 0v.083A6 6 0 006 11v3c0 .538-.214 1.055-.595 1.43L4 17h5m6 0v1a3 3 0 11-6 0v-1"
-      />
-    </svg>
+    <img src={alerticon} alt="alert icon"  className="w-6 h-6 " />
 
     {/* Notification badge */}
     <span className="absolute -top-1 -right-1  text-white text-xs font-semibold px-1.5 py-0.5 rounded-full" style={{backgroundColor:"#4B6A4F"}}>
@@ -101,7 +89,7 @@ const Navbar: React.FC = () => {
             className="w-8 h-8 rounded-full object-cover border border-gray-300"
           />
           <div className="leading-tight hidden sm:block">
-            <p className="text-sm font-medium text-gray-900">John Doe</p>
+            <p className="text-sm font-medium text-left text-gray-900">John Doe</p>
             <p className="text-xs text-gray-500 truncate max-w-[120px]">john.doe@example.com</p>
           </div>
         </div>

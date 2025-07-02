@@ -4,6 +4,68 @@
   padding: 2rem;
   text-align: center;
 }
+.dashed-vertical-border {
+  position: relative;
+}
+.dashed-vertical-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #ccc,
+    #ccc 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+.dashed-border-x {
+  position: relative;
+}
+
+.dashed-border-x::before,
+.dashed-border-x::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #ccc,
+    #ccc 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+.dashed-border-x::before {
+  left: 0;
+}
+
+.dashed-border-x::after {
+  right: 0;
+}
+.dashed-vertical-border::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+   /* use left: 0 if you want left border */
+  width: 1px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #ccc,
+    #ccc 6px,
+    transparent 2px,
+    transparent 12px
+  );
+}
 
 .logo {
   height: 6em;

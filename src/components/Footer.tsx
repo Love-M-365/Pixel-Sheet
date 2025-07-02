@@ -6,7 +6,7 @@ const FooterTabs: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("All Orders");
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 border-t border-gray-200 bg-white flex justify-start items-center px-2 h-10 text-sm font-medium z-10">
+    <div className="fixed bottom-0 left-0 right-0 border-t border-gray-200 bg-white flex justify-start items-center px-2  text-sm font-medium h-[48px] z-10">
         <div className="w-5"></div>
       {tabs.map((tab) => (
         <div

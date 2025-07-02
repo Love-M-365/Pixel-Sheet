@@ -4,6 +4,9 @@ import SecondaryNavbar from "./SecondaryNavbar";
 import more from "../assets/More.svg"
 import profileimage from "../assets/Ellipse 1.png"
 import alerticon from "../assets/Alert.svg"
+import greenbox from "../assets/green.svg"
+import arrowright from "../assets/Chevron.svg"
+import search2 from "../assets/search2.svg"
 const Navbar: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
 
@@ -13,54 +16,42 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-    <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md px-6 py-3 flex justify-between items-center">
+    <header className="fixed top-0 left-0  w-full z-50 bg-white shadow-md px-6 py-3 flex justify-between h-[56px] items-center">
       {/* Logo */}
-      <div className="flex items-center space-x-2">
+      <div className="flex  h-[24px] w-[343px] items-center space-x-2">
   {/* Square box */}
-  <div className="w-5 h-5 rounded-md border-2 border-green-700 flex overflow-hidden">
-  <div className="w-1/2 h-full bg-white" />
-  <div className="w-1/2 h-full bg-green-700" />
-</div>
+  <img src={greenbox} alt="green box" className="h-[16px] w-[20px]">
+  </img>
 
 
   {/* Breadcrumbs */}
-  <div className="flex items-center space-x-1 text-sm text-gray-400">
+  <div className="flex items-center space-x-1 ml-[13px] text-[14px] text-gray-400">
     <span>Workspace</span>
-    <span className="text-gray-400">›</span>
+    <img src={arrowright} alt="arrow right" ></img>
     <span>Folder 2</span>
-    <span className="text-gray-400">›</span>
+    <img src={arrowright} alt="arrow right" ></img>
     <span className="text-black font-medium">Spreadsheet 3</span>
-     <div className="flex items-center justify-center ">
-        <img src={more} alt="more"  className="w-5 h-5" />
-      </div>
+     
+        <img src={more} alt="more" className="h-[20px] w-[20px]">
+  </img>
+        
+      
   </div>
 </div>
 
 
       {/* Right */}
-      <div className="flex items-center space-x-6">
+      <div className="flex items-center space-x-2  h-[40px]">
         {/* Search */}
-        <div className="flex items-center bg-gray-100 rounded-xl px-3 py-2 text-gray-500">
-          <svg
-            className="w-4 h-4 mr-2"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
-            />
-          </svg>
+        <div className="flex items-center w-[165px] h-[40px] bg-[#F6F6F6] rounded-[6px] px-3 py-2 text-gray-500">
+          <img src={search2} alt="more" className="h-[16px] w-[16px]">
+  </img>
           <input
             type="text"
             value={searchValue}
             onChange={handleSearchChange}
             placeholder="Search within sheet"
-            className="bg-transparent focus:outline-none text-sm text-gray-700 placeholder-gray-500"
+            className="bg-transparent ml-[4px] focus:outline-none text-[12px] text-gray-700 placeholder-gray-500"
           />
         </div>
 
@@ -71,26 +62,26 @@ const Navbar: React.FC = () => {
     className="relative p-2 rounded-full bg-white transition duration-200 "
   >
     {/* Updated bell icon (better look) */}
-    <img src={alerticon} alt="alert icon"  className="w-6 h-6 " />
+    <img src={alerticon} alt="alert icon"  className="w-[24px] h-[24px] " />
 
     {/* Notification badge */}
-    <span className="absolute -top-1 -right-1  text-white text-xs font-semibold px-1.5 py-0.5 rounded-full" style={{backgroundColor:"#4B6A4F"}}>
-      2
+    <span className="absolute top-1 right-1  text-white text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex justify-center items-center w-[16px] h-[16px]" style={{backgroundColor:"#4B6A4F"}}>
+        <p className="text-[10px] ">2</p>
     </span>
   </button>
 </div>
 
 
         {/* Profile */}
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 w-[112px] mr-2 h-[40px]">
           <img
             src={profileimage}
             alt="User Profile"
             className="w-8 h-8 rounded-full object-cover border border-gray-300"
           />
           <div className="leading-tight hidden sm:block">
-            <p className="text-sm font-medium text-left text-gray-900">John Doe</p>
-            <p className="text-xs text-gray-500 truncate max-w-[120px]">john.doe@example.com</p>
+            <p className="text-[12px] text-left text-[#121212] ">John Doe</p>
+            <p className="text-[10px] text-[#757575] truncate max-w-[55px]">john.doe@example.com</p>
           </div>
         </div>
       </div>

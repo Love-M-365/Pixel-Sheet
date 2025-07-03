@@ -18,6 +18,102 @@ import addicon from "../assets/Add.svg"
 type StatusType = "In-process" | "Complete" | "Blocked" | "Need to start";
 type PriorityType = "High" | "Medium" | "Low";
 
+
+
+const extraHeaders = [
+  {
+    span: 4,
+    bgColor: "#E2E2E2",
+    border: false,
+    content: <span className="text-sm font-semibold"><button className="inline-flex items-center justify-center  bg-gray-100 text-[#545454] rounded-[4px] px-1 font-normal   border h-[24px] w-[158px] border-gray-200 shadow-sm hover:bg-gray-200 text-[12px] space-x-1">
+      <img
+  src={link}
+  alt="Link icon"
+  className=" w-[16px] mr-[2px] h-[16px] "
+/>
+
+    Q3 Financial Overview
+
+      
+    </button>
+     <button className="p-1 ml-2 bg-transparent  ">
+      <img src={reload} className="w-[16px] h-[16px] " />
+    </button></span>,
+  },
+  {
+    span: 1,
+    bgColor: "#FFFFFF",
+    border: false,
+    content: <div className="flex items-center space-x-2">
+    </div>,
+  },
+  {
+    span: 1,
+    bgColor: "#D2E0D4",
+    border: false,
+    content: <button className="flex items-center justify-center text-center gap-2 px-3 py-1.5 bg-[#D2E0D4] rounded-md text-[14px] font-semibold text-[#505450] ">
+  
+  <img src={arrowsplit} alt="arrow split"  className="w-[16px] h-[16px] fill-[#505450]" />
+
+  
+  <span>ABC</span>
+
+  
+  <div className="flex items-center justify-center ">
+    <img src={more} alt="more"  className="w-[16px] h-[16px]" />
+  </div>
+</button>,
+  },
+  {
+    span: 2,
+    bgColor: "#DCCFFC",
+    border: false,
+    content: <button className="flex items-center justify-center text-center gap-2 px-3 py-1.5 bg-transparent rounded-md text-xs font-semibold text-[#505450] ">
+  
+  <img src={arrowsplitwhite} alt="arrow split"  className="w-[16px] h-[16px] " />
+
+  
+  <span  className=" text-[14px]">Answer a question</span>
+
+  
+  
+  <div className="flex items-center justify-center ">
+    <img src={more} alt="more"  className="w-[16px] h-[16px]" />
+  </div>
+</button>,
+  },
+  {
+    span: 1,
+    bgColor: "#FAC2AF",
+    border: false,
+    content: (
+       <button className="flex text-[14px] items-center justify-center text-center gap-2 px-1 py-1 bg-transparent rounded-md text-xs font-semibold text-[#505450] ">
+  
+  <img src={arrowsplitwhite} alt="arrow split"  className="w-[16px] h-[16px]" />
+
+  
+  <span className=" text-[14px]">Extract</span>
+
+  
+  
+  <div className="flex items-center justify-center ">
+    <img src={more} alt="more"  className="w-[16px] h-[16px]" />
+  </div>
+</button>
+    ),
+  },
+  {
+    span: 1,
+    bgColor: "#EEEEEE",
+    border: true,
+    content: (
+       <button className="w-[22px] h-[22px] p-0 flex items-center justify-center bg-transparent ">
+  <img src={addicon} alt="add " className="w-[20px] h-[20px]"></img>
+</button>
+    ),
+  },
+];
+
 const columns = [
   {
     key: "request",
@@ -111,9 +207,10 @@ const columns = [
     icon: <></>,
     hasDropdown: false,
     width: 124,
-    bgColor: "white",
+    bgColor: "#FFFFFF",
     align: "center",
   },
+  
 ];
 
 const headerColors = [
@@ -253,33 +350,39 @@ const AirtableSheet: React.FC = () => {
   };
 
   return (
-    <div className="w-screen h-[calc(100vh-104px)] overflow-auto bg-gray-50 absolute top-[104px] left-0">
-      <div className="w-fit">
-        <div className="flex">
-          <div className="w-[32px] h-[32px] bg-white border-r"></div>
-          {columns.map((col, index) => (
-            <div
-              key={col.key}
-              style={{ width: "124px" }}
-              className="h-[32px] flex items-center px-2 text-xs font-semibold border-r bg-[#f1f1f1] text-[#757575]"
-            >
-              Extra Header {index + 1}
-            </div>
-          ))}
-        </div>
-        {/* Extra Header Row */}
-        <div className="flex">
-          <div className="w-[32px] h-[32px] bg-white border-r"></div>
-          {columns.map((col, index) => (
-            <div
-              key={col.key}
-              style={{ width: colWidths[index] }}
-              className="h-[32px] flex items-center px-2 text-xs font-semibold border-r bg-[#f1f1f1] text-[#757575]"
-            >
-              Extra Header {index + 1}
-            </div>
-          ))}
-        </div>
+    <div className="w-screen h-screen  bg-gray-50 fixed overflow-auto top-[104px] left-0 ">
+      <div className="w-[1440px] bg-[#F6F6F6]">
+       
+       
+       {/* Extra Header Row */}
+<div className="flex">
+  <div className="w-[32px] h-[32px] bg-white border-r"></div>
+  {extraHeaders.map((header, index) => {
+    const startIndex = extraHeaders.slice(0, index).reduce((acc, h) => acc + h.span, 0);
+    const totalWidth = colWidths
+      .slice(startIndex, startIndex + header.span)
+      .reduce((a, b) => a + b, 0);
+
+    return (
+      <div
+        key={index}
+        style={{
+          width: totalWidth,
+          backgroundColor: header.bgColor,
+          
+        }}
+         className={clsx(
+          "h-[32px] px-2 flex items-center text-xs font-semibold",
+          header.span === 4 ? "justify-between" : "justify-center",
+          header.border === true ? "dashed-vertical-border":""
+        )}
+      >
+        {header.content}
+      </div>
+    );
+  })}
+</div>
+
 
         {/* Main Header Row */}
         <div className="flex">
@@ -288,7 +391,14 @@ const AirtableSheet: React.FC = () => {
   <div
     key={col.key}
     style={{ width: colWidths[index], backgroundColor: col.bgColor }}
-    className="relative h-[32px] flex items-center justify-between px-2 border-r text-xs font-semibold text-[#757575]"
+    className={clsx(
+  "relative h-[32px] flex items-center justify-between px-2  text-xs font-semibold text-[#757575]",
+  {
+    "border-r": index !== columns.length - 2, 
+    "dashed-vertical-border border-b bg-[#EEEEEE]": index === columns.length - 1, 
+  }
+)}
+
   >
     <div className="flex items-center space-x-1">
       {col.icon}
@@ -310,27 +420,33 @@ const AirtableSheet: React.FC = () => {
 
         {/* Data Rows */}
        {data.map((row, rowIndex) => (
-  <div key={rowIndex} className="flex border-b border-gray-200">
+  <div key={rowIndex} className="flex  border-b w-[1406px] bg-white border-gray-200">
     <div className="w-[32px] text-[12px] h-[32px] flex items-center justify-center border-r text-[#757575]">
       {rowIndex + 1}
     </div>
-    {columns.map((col, colIndex) => {
+    {columns.slice(0, 10).map((col, colIndex) => {
       const key = col.key as keyof RowData;
       const value = row[key];
 
       return (
         <div
-          key={key as string}
-          style={{ width: colWidths[colIndex] }}
-          className={clsx(
-            "border-r h-[32px] justify-center flex items-center",
-            {
-              "justify-start": columns[colIndex].align === "left",
-              "justify-center": columns[colIndex].align === "center",
-              "justify-end": columns[colIndex].align === "right",
-            }
-          )}
-        >
+  key={key as string}
+  style={{ width: colWidths[colIndex] }}
+  className={clsx(
+    "h-[32px] flex items-center",
+    colIndex === columns.length - 1
+  ? "dashed-vertical-border"
+  : colIndex === columns.length - 2
+    ? "border-r-0"
+    : "border-r",
+
+    {
+      "justify-start": columns[colIndex].align === "left",
+      "justify-center": columns[colIndex].align === "center",
+      "justify-end": columns[colIndex].align === "right",
+    }
+  )}
+>
           {key === "status" ? (
             <div
               className={clsx(
@@ -386,15 +502,28 @@ const AirtableSheet: React.FC = () => {
 {[...Array(20)].map((_, i) => {
   const rowIndex = data.length + i;
   return (
-    <div key={`empty-${i}`} className="flex border-b border-gray-200">
-      <div className="w-[32px] h-9 flex items-center justify-center border-r text-gray-400">
+    <div key={`empty-${i}`} className="flex h-[32px] bg-white  border-b w-[1406px] border-gray-200">
+      <div className="w-[32px] h-9 flex items-center justify-center border-r text-[#757575] text-[12px]">
         {rowIndex + 1}
       </div>
       {columns.map((_, colIndex) => (
         <div
           key={colIndex}
           style={{ width: colWidths[colIndex] }}
-          className="border-r h-9 flex items-center"
+          className={clsx(
+    " flex items-center",
+    colIndex === columns.length - 1
+  ? "dashed-vertical-border"
+  : colIndex === columns.length - 2
+    ? "border-r-0"
+    : "border-r",
+
+    {
+      "justify-start": columns[colIndex].align === "left",
+      "justify-center": columns[colIndex].align === "center",
+      "justify-end": columns[colIndex].align === "right",
+    }
+  )}
         >
           <input
             ref={(el) => {

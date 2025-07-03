@@ -2,8 +2,8 @@
 import './App.css'
 import FooterTabs from './components/Footer'
 import Navbar from './components/Navbar'
+import AirtableSheet from './components/PixelSheet'
 
-import ExcelSheet from './components/Sheet'
 
 function App() {
  
@@ -12,7 +12,7 @@ function App() {
     <>
     
       <Navbar></Navbar>
-      <ExcelSheet></ExcelSheet>
+      <AirtableSheet></AirtableSheet>
       <FooterTabs></FooterTabs>
     </>
   )

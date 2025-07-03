@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import type { ChangeEvent } from "react";
 import SecondaryNavbar from "./SecondaryNavbar";
 import more from "../assets/More.svg"
@@ -9,6 +9,18 @@ import arrowright from "../assets/Chevron.svg"
 import search2 from "../assets/search2.svg"
 const Navbar: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>("");
+  useEffect(() => {
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach((btn) => {
+    if (!(btn as any)._logged) {
+      btn.addEventListener("click", () => {
+        console.log("Button clicked:", btn.innerText);
+      });
+      (btn as any)._logged = true; // to prevent duplicate listeners
+    }
+  });
+}, []);
+
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);

@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useEffect} from "react";
 import arrowsort from "../assets/Arrow Sort.svg"
 import callveiw from '../assets/callveiw.svg'
 import eye from '../assets/Eye.svg'
@@ -8,6 +8,18 @@ import arrowsplitwhite from '../assets/Arrow Split White.svg'
 import importicon from "../assets/Arrow Download.svg"
 import exporticon from "../assets/Arrow Upload.svg"
 const SecondaryNavbar: React.FC = () => {
+    useEffect(() => {
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach((btn) => {
+    if (!(btn as any)._logged) {
+      btn.addEventListener("click", () => {
+        console.log("Button clicked:", btn.innerText);
+      });
+      (btn as any)._logged = true; // to prevent duplicate listeners
+    }
+  });
+}, []);
+
   return (
     <header className="fixed top-[56px] h-[48px] left-0 w-full z-50 bg-white shadow-sm px-2 py-1 flex justify-between items-center ">
     <div className="w-full bg-white border-t border-gray-200  py-1 flex justify-between items-center ">
@@ -15,8 +27,8 @@ const SecondaryNavbar: React.FC = () => {
       <div className="flex items-center space-x-1">
         <button className="bg-white text-[14px] w-[91px] h-[36px]  px-2 py-1 rounded-md text-[#121212] flex items-center justify-center ">
             <p className="text-[14px] mr-[1.5px]">Tool bar</p>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-[16px] h-[16px]">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-[16px] h-[16px]">
+  <path  d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
 </svg>
 
         </button>

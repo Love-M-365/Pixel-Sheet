@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import addicon from "../assets/Add.svg"
 const tabs = ["All Orders", "Pending", "Reviewed", "Arrived"];
 
 const FooterTabs: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("All Orders");
+  useEffect(() => {
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach((btn) => {
+    if (!(btn as any)._logged) {
+      btn.addEventListener("click", () => {
+        console.log("Button clicked:", btn.innerText);
+      });
+      (btn as any)._logged = true; // to prevent duplicate listeners
+    }
+  });
+}, []);
+
 
   return (
     <div className="fixed bottom-0 left-0 right-0 border-t border-gray-200 bg-white flex justify-start items-center px-2  text-sm font-medium h-[48px] z-10">

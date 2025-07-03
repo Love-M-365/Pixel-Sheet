@@ -13,6 +13,7 @@ import arrowsplit from '../assets/Arrow Split.svg'
 import arrowsplitwhite from '../assets/Arrow Split White.svg'
 import more from "../assets/More.svg"
 import addicon from "../assets/Add.svg"
+import CustomButton from "./CustomButton";
 
 
 type StatusType = "In-process" | "Complete" | "Blocked" | "Need to start";
@@ -120,7 +121,7 @@ const columns = [
     label: "Job Request",
     icon: <img src={briefcase} alt="Briefcase" className="w-[16px] h-[16px]" />,
     hasDropdown: true,
-    dropdownIcon: <ChevronDownIcon className="w-[12px] fill-[#AFAFAF] h-[12px]" />,
+    dropdownIcon: <CustomButton className="p-1 bg-transparent"><ChevronDownIcon  aria-label="drop-down" className="w-[12px] fill-[#AFAFAF] h-[12px]" /></CustomButton>,
     width: 256,
     bgColor: "#EEEEEE",
     align: "left",
@@ -130,7 +131,7 @@ const columns = [
     label: "Submitted",
     icon: <img src={submitted} alt="submitted" className="w-[16px] h-[16px]" />,
     hasDropdown: true,
-    dropdownIcon: <ChevronDownIcon className="w-[12px] h-[12px] fill-[#AFAFAF]" />,
+    dropdownIcon: <CustomButton className="p-1 bg-transparent"><ChevronDownIcon aria-label="drop-down"  className="w-[12px] fill-[#AFAFAF] h-[12px]" /></CustomButton>,
     width: 124,
     bgColor: "#EEEEEE",
     align: "right",
@@ -140,7 +141,7 @@ const columns = [
     label: "Status",
     icon: <img src={statusicon} alt="status" className="w-[16px] h-[16px]" />,
     hasDropdown: true,
-    dropdownIcon: <ChevronDownIcon className="w-[12px] h-[12px] fill-[#AFAFAF]" />,
+    dropdownIcon: <CustomButton className="p-1 bg-transparent"><ChevronDownIcon aria-label="drop-down"  className="w-[12px] fill-[#AFAFAF] h-[12px]" /></CustomButton>,
     width: 124,
     bgColor: "#EEEEEE",
     align: "center",
@@ -150,7 +151,7 @@ const columns = [
     label: "Submitter",
     icon: <img src={person} alt="submitter" className="w-[16px] h-[16px]" />,
     hasDropdown: true,
-    dropdownIcon: <ChevronDownIcon className="w-[12px] h-[12px] fill-[#AFAFAF]" />,
+    dropdownIcon: <CustomButton className="p-1 bg-transparent"><ChevronDownIcon aria-label="drop-down"  className="w-[12px] fill-[#AFAFAF] h-[12px]" /></CustomButton>,
     width: 124,
     bgColor: "#EEEEEE",
     align: "left",
@@ -160,7 +161,7 @@ const columns = [
     label: "URL",
     icon: <img src={globe} alt="url" className="w-[16px] h-[16px]" />,
     hasDropdown: true,
-    dropdownIcon: <ChevronDownIcon className="w-[12px] h-[12px] fill-[#AFAFAF]" />,
+    dropdownIcon: <CustomButton className="p-1 bg-transparent"><ChevronDownIcon aria-label="drop-down"  className="w-[12px] fill-[#AFAFAF] h-[12px]" /></CustomButton>,
     width: 124,
     bgColor: "#EEEEEE",
     align: "left",
@@ -307,6 +308,18 @@ const AirtableSheet: React.FC = () => {
   const [data, setData] = useState<RowData[]>(initialData);
   const [colWidths, setColWidths] = useState<number[]>(columns.map((col) => col.width || 124));
   const inputRefs = useRef<(HTMLInputElement | null)[][]>([]);
+  useEffect(() => {
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach((btn) => {
+    if (!(btn as any)._logged) {
+      btn.addEventListener("click", () => {
+        console.log("Button clicked:", btn.innerText);
+      });
+      (btn as any)._logged = true; // to prevent duplicate listeners
+    }
+  });
+}, []);
+
   
 
   const handleChange = <K extends keyof RowData>(rowIndex: number, key: K, value: RowData[K]) => {
@@ -355,7 +368,7 @@ const AirtableSheet: React.FC = () => {
        
        
        {/* Extra Header Row */}
-<div className="flex">
+<div className="flex sticky top-0 z-30">
   <div className="w-[32px] h-[32px] bg-white border-r"></div>
   {extraHeaders.map((header, index) => {
     const startIndex = extraHeaders.slice(0, index).reduce((acc, h) => acc + h.span, 0);
@@ -385,7 +398,7 @@ const AirtableSheet: React.FC = () => {
 
 
         {/* Main Header Row */}
-        <div className="flex">
+        <div className="flex sticky top-[32px] z-20">
           <div className="w-[32px] h-[32px] flex items-center justify-center border-r bg-[#eeeeee] text-[#AFAFAF] text-[16px]">#</div>
           {columns.map((col, index) => (
   <div

@@ -359,8 +359,8 @@ const AirtableSheet: React.FC = () => {
   };
 
   return (
-    <div className="w-screen h-screen  bg-gray-50 fixed overflow-auto top-[104px] left-0 ">
-      <div className="w-[1440px] bg-[#F6F6F6]">
+    <div className="w-screen h-screen  bg-transparent fixed overflow-auto top-[104px] left-0 ">
+      <div className="w-[1440px] bg-transparent">
        
        
        {/* Extra Header Row */}

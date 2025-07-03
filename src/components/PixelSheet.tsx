@@ -214,10 +214,6 @@ const columns = [
   
 ];
 
-const headerColors = [
-  "#eeeeee", "#eeeeee", "#eeeeee", "#eeeeee", "#eeeeee",
-  "#E8F0E9", "#EAE3FC", "#EAE3FC", "#FFE9E0", "white",
-];
 
 interface RowData {
   request: string;

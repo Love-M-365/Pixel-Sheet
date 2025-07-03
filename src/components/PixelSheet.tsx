@@ -535,15 +535,15 @@ const AirtableSheet: React.FC = () => {
   )}
         >
           <input
-            ref={(el) => {
-              if (!inputRefs.current[rowIndex]) inputRefs.current[rowIndex] = [];
-              inputRefs.current[rowIndex][colIndex] = el;
-            }}
-            className="bg-transparent text-black w-full h-full px-2 outline-none truncate"
-            onKeyDown={(e) => handleKeyDown(e, rowIndex, colIndex)}
-            value=""
-            onChange={() => {}}
-          />
+  ref={(el) => {
+    if (!inputRefs.current[rowIndex]) inputRefs.current[rowIndex] = [];
+    inputRefs.current[rowIndex][colIndex] = el;
+  }}
+  className="bg-transparent text-black w-full h-full px-2 outline-none truncate"
+  onKeyDown={(e) => handleKeyDown(e, rowIndex, colIndex)}
+  placeholder=""
+/>
+
         </div>
       ))}
     </div>

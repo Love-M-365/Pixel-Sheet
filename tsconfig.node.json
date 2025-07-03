@@ -20,7 +20,7 @@
     "noUncheckedSideEffectImports": true,
     "emitDeclarationOnly": true,
 
-    "noEmit": false 
+
   },
   "include": ["vite.config.ts"]
 }

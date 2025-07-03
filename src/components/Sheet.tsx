@@ -175,16 +175,16 @@ const AirtableSheet: React.FC = () => {
 
   return (
     <div className="w-screen h-screen  bg-gray-50 fixed overflow-auto top-[104px] left-0 " >
-        <div className="overflow-x-auto w-full">
-      <div className="min-w-[1440px]">
+        
+      <div className="w-[1440px] bg-[#F6F6F6]">
         {/* Tab Row above headers */}
-<div className="grid  grid-cols-[2rem_256px_repeat(5,124px)_125px_125px_124px_124px] h-[32px] bg-white text-gray-700  border-b border-gray-300">
+<div className="grid w-[1406px]  grid-cols-[2rem_256px_repeat(5,124px)_125px_125px_124px_124px]  h-[32px] bg-white text-gray-700  border-b border-gray-300">
   {/* Empty cell for row number column */}
-  <div className="h-[32px] border-r w-[32px] bg-[white]"></div>
+  <div className="h-[32px] mt-1  w-[32px] bg-[white]"></div>
 
   {/* Tab spanning 4 columns (Job Request to Submitter) */}
-  <div className="col-span-4  flex items-center  px-2 border-r rounded-t border-2 border-b-0 bg-[#E2E2E2] ">
-    <button className="inline-flex items-center justify-center  bg-gray-100 text-[#545454] rounded-md px-1 font-normal py-1  border h-[24px] w-[158px] border-gray-200 shadow-sm hover:bg-gray-200 text-[12px] space-x-1">
+  <div className="col-span-4  flex items-center   px-2 border-r   bg-[#E2E2E2] ">
+    <button className="inline-flex items-center justify-center  bg-gray-100 text-[#545454] rounded-[4px] px-1 font-normal   border h-[24px] w-[158px] border-gray-200 shadow-sm hover:bg-gray-200 text-[12px] space-x-1">
       <img
   src={link}
   alt="Link icon"
@@ -265,8 +265,8 @@ const AirtableSheet: React.FC = () => {
 </div>
 
         {/* Header */}
-      <div className="grid  grid-cols-[2rem_256px_repeat(5,124px)_125px_125px_124px_124px]   bg-white text-gray-500 border-b border-gray-300 z-10 text-[10px]">
-  <div className="h-[32px] flex text-[16px] text-[#AFAFAF] font-normal items-center justify-center  border-r bg-[#eeeeee]">#</div>
+      <div className="grid w-[1406px] mt-1 grid-cols-[2rem_256px_repeat(5,124px)_125px_125px_124px_124px]   bg-white text-gray-500 border-b border-gray-300 z-10 text-[10px]">
+  <div className="h-[32px] mt-1 flex text-[16px] text-[#AFAFAF] font-normal items-center justify-center  border-r bg-[#eeeeee]">#</div>
 
   {columns.map((col, index) => (
   <div
@@ -297,7 +297,7 @@ const AirtableSheet: React.FC = () => {
         {data.map((row, rowIndex) => (
           <div
             key={rowIndex}
-            className="grid  grid-cols-[2rem_256px_repeat(5,124px)_125px_125px_124px_124px] border-b border-gray-200 bg-white hover:bg-gray-50 text-[8px]"
+            className="grid  w-[1406px] grid-cols-[2rem_256px_repeat(5,124px)_125px_125px_124px_124px] border-b  border-gray-200 bg-white hover:bg-gray-50 text-[8px]" 
           >
             <div className="h-9 flex text-xs items-center justify-center  text-gray-500 border-r bg-[white]">
               {rowIndex + 1}
@@ -331,7 +331,7 @@ const AirtableSheet: React.FC = () => {
   return (
     <div
       key={`empty-${i}`}
-      className="grid grid-cols-[2rem_256px_repeat(5,124px)_125px_125px_124px_124px] border-b border-gray-200 bg-white hover:bg-gray-50 text-[8px]"
+      className="grid  w-[1406px] grid-cols-[2rem_256px_repeat(5,124px)_125px_125px_124px_124px] border-b border-gray-200 bg-white hover:bg-gray-50 text-[8px]"
     >
       <div className="h-9 flex items-center text-xs justify-center text-gray-500 border-r bg-white">
         {rowIndex + 1}
@@ -359,7 +359,7 @@ const AirtableSheet: React.FC = () => {
 
       </div>
      </div>
-    </div>
+    
   );
 };
 

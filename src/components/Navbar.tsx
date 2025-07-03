@@ -20,22 +20,20 @@ const Navbar: React.FC = () => {
       {/* Logo */}
       <div className="flex  h-[24px] w-[343px] items-center space-x-2">
   {/* Square box */}
-  <img src={greenbox} alt="green box" className="h-[16px] w-[20px]">
+  <img src={greenbox} alt="green box" className="h-[16px] mr-[16px] w-[20px]">
   </img>
 
 
   {/* Breadcrumbs */}
-  <div className="flex items-center space-x-1 ml-[13px] text-[14px] text-gray-400">
+  <div className="flex items-center space-x-1  text-[14px] text-gray-400">
     <span>Workspace</span>
     <img src={arrowright} alt="arrow right" ></img>
     <span>Folder 2</span>
     <img src={arrowright} alt="arrow right" ></img>
     <span className="text-black font-medium">Spreadsheet 3</span>
-     
-        <img src={more} alt="more" className="h-[20px] w-[20px]">
-  </img>
-        
-      
+        <button className="bg-transparent p-0">
+            <img src={more} alt="more" className="h-[20px]  w-[20px]"></img>
+        </button> 
   </div>
 </div>
 

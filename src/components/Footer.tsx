@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import addicon from "../assets/Add.svg"
 const tabs = ["All Orders", "Pending", "Reviewed", "Arrived"];
 
 const FooterTabs: React.FC = () => {
@@ -11,10 +11,10 @@ const FooterTabs: React.FC = () => {
       {tabs.map((tab) => (
         <div
           key={tab}
-          className={`px-3 py-1 mx-1 cursor-pointer rounded-sm whitespace-nowrap
+          className={`px-3 py-1 mx-1 flex justify-center items-center cursor-pointer h-[48px] rounded-sm whitespace-nowrap
             ${activeTab === tab
-              ? "text-[#3E5741] bg-[#E8F0E9] border-t-2 border-[#4B6A4F]"
-              : "text-[#757575] hover:text-black"
+              ? "text-[#3E5741] font-semibold text-[16px] bg-[#E8F0E9] border-t-2 border-[#4B6A4F]"
+              : "text-[#757575] font-semibold text-[16px] hover:text-black"
             }`}
           onClick={() => setActiveTab(tab)}
         >
@@ -22,14 +22,13 @@ const FooterTabs: React.FC = () => {
         </div>
       ))}
       <div
-        className="ml-2 w-5 h-5 flex items-center justify-center rounded cursor-pointer text-gray-500 hover:text-black"
+        className="ml-2 w-[36px] h-[44px]  flex items-center justify-center rounded cursor-pointer text-gray-500 hover:text-black"
         onClick={() => console.log("Add tab")}
       >
-         <button className="w-12 h-12 flex items-center justify-center bg-transparent rounded-sm">
-  <svg className="w-10 h-10 text-[#04071E]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-  </svg>
+        <button className="w-[30px] h-[30px] p-0 flex items-center justify-center bg-transparent ">
+  <img src={addicon} alt="add " className="w-[28px] h-[28px]"></img>
 </button>
+
       </div>
     </div>
   );

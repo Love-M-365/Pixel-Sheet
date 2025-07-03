@@ -62,7 +62,7 @@ const SecondaryNavbar: React.FC = () => {
 
       {/* Right section */}
       <div className="flex items-center space-x-3">
-        <button className="bg-white w-[90px] h-[36px] border border-gray-300 px-3 py-1 rounded-[6px] text-[#545454] flex items-center justify-center space-x-1">
+        <button className="bg-white w-[90px] h-[36px] border border-[#EEEEEE] px-3 py-1 rounded-[6px] text-[#545454] flex items-center justify-center space-x-1">
      <img
     src={importicon}
     alt="import"
@@ -71,7 +71,7 @@ const SecondaryNavbar: React.FC = () => {
       <span className="text-[14px] ">Import</span>
     </button>
 
-       <button className="bg-white w-[90px] h-[36px] border border-gray-300 px-3 py-1 rounded-[6px] text-[#545454] flex items-center justify-center space-x-1">
+       <button className="bg-white w-[90px] h-[36px] border border-[#EEEEEE] px-3 py-1 rounded-[6px] text-[#545454] flex items-center justify-center space-x-1">
      <img
     src={exporticon}
     alt="export"
@@ -79,7 +79,7 @@ const SecondaryNavbar: React.FC = () => {
   />
       <span className="text-[14px] ">Export</span>
     </button>
-    <button className="bg-white w-[90px] h-[36px] border rounded-[6px] border-gray-300 px-3 py-1  text-[#545454] flex items-center justify-center space-x-1">
+    <button className="bg-white w-[90px] h-[36px] border rounded-[6px] border-[#EEEEEE] px-3 py-1  text-[#545454] flex items-center justify-center space-x-1">
      <img
     src={share}
     alt="share"

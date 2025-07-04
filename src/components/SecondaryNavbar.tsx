@@ -21,7 +21,7 @@ const SecondaryNavbar: React.FC = () => {
 }, []);
 
   return (
-    <header className="fixed top-[56px] h-[48px] left-0 w-full z-50 bg-white shadow-sm px-2 py-1 flex justify-between items-center ">
+    <header className="fixed overflow-x-auto w-full top-[56px] h-[48px] left-0 lg:overflow-x-visible z-50 bg-white shadow-sm px-2 py-1 flex justify-between items-center ">
     <div className="w-full bg-white border-t border-gray-200  py-1 flex justify-between items-center ">
       {/* Left section */}
       <div className="flex items-center space-x-1">

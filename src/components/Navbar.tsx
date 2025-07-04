@@ -28,9 +28,9 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-    <header className="fixed top-0 left-0  w-full z-50 bg-white shadow-md px-6 py-3 flex justify-between h-[56px] items-center">
+    <header className="fixed top-0 left-0 overflow-x-auto w-full z-50 bg-white shadow-md px-6 py-3 flex lg:overflow-x-visible justify-between h-[56px] items-center">
       {/* Logo */}
-      <div className="flex  h-[24px] w-[343px] items-center space-x-2">
+      <div className="flex   h-[24px] w-[343px] items-center space-x-2">
   {/* Square box */}
   <img src={greenbox} alt="green box" className="h-[16px] mr-[16px] w-[20px]">
   </img>
